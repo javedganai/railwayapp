@@ -1,0 +1,62 @@
+<div class="row">
+  <form class="col s12 head">
+    <div class="row">
+        <div class="input-field col s2"></div>
+      <div class="input-field col s2">
+        <i class="material-icons prefix">transfer_within_a_station
+        </i>
+        <input [(ngModel)] ="source" id="icon_prefix" name="source"list="sstation" (keyup)="sourcechange()"type="text" class="validate">
+        <label for="icon_prefix">Source Station</label>
+        <datalist id="sstation" >
+            <option *ngFor="let s of arr" >{{s}}</option>
+            
+        </datalist>
+      </div>
+      <div class="input-field col s2">
+        <i class="material-icons prefix">transfer_within_a_station</i>
+        <input id="icon_telephone" type="tel" list="dstation" (keyup)="destonchange() "name="destination" [(ngModel)]="destination" class="validate">
+        <label for="icon_telephone">Destination Station</label>
+        <datalist id="dstation"  >
+            <option *ngFor="let d of dest">{{d}}</option>
+            
+        </datalist>
+      </div>
+      <div class="input-field col s2">
+        <input type="text" name="datepic"[(ngModel)]="datepic" id="datepicker" class="datepicker">
+      </div>
+      <div class="col s2">
+          <button class="btn waves-effect waves-light" type="submit" name="action"(click)="gettrains()" >Submit
+         
+          </button>
+          </div>
+      <div class="input-field col s2"></div>
+    </div>
+    
+  </form>
+</div>
+
+<div class="row" *ngIf="status==2">
+  <div class="cols s1"></div>
+  <div class="cols s10">
+
+    <table>
+      <thead>
+        <tr>
+            <th>Name</th>
+            <th>Item Name</th>
+            <th>Item Price</th>
+        </tr>
+      </thead>
+
+      <tbody >
+        <tr *ngFor="let row of trains">
+          <td *ngFor="let item of row">{{item}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+
+
+  </div>
+  <div class="cols s1"></div>
+</div>
